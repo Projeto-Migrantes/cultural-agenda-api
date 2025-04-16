@@ -1,0 +1,57 @@
+{
+  "name": "cultural-agenda-api",
+  "version": "1.0.0",
+  "description": "API RESTful para uma plataforma digital de calendário cultural voltada para migrantes no Brasil. Permite a divulgação de eventos, serviços e estabelecimentos promovidos pela comunidade migrante, promovendo integração social, visibilidade e fortalecimento da rede de apoio local.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Projeto-Migrantes/cultural-agenda-api.git"
+  },
+  "keywords": [
+    "API",
+    "REST",
+    "Node.js",
+    "Express",
+    "JavaScript",
+    "migrantes",
+    "calendário cultural"
+  ],
+  "author": "Alisson Oliveira e equipe",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Projeto-Migrantes/cultural-agenda-api/issues"
+  },
+  "homepage": "https://github.com/Projeto-Migrantes/cultural-agenda-api#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "chai": "^5.2.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
+    "mocha": "^11.1.0",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.3",
+    "sequelize-cli": "^6.6.2"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.14.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0",
+    "zod": "^3.24.2"
+  }
+}
