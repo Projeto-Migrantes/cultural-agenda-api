@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16.8
+    container_name: cultural-agenda-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cultural_agenda_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - cultural_agenda_network
+
+  api:
+    image: node:22
+    container_name: cultural-agenda-api
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/cultural_agenda_db
+      JWT_SECRET: dev_secret_key_123
+      PORT: 3000
+    depends_on:
+      - db
+    command: sh -c "npm install && npm run dev"
+    networks:
+      - cultural_agenda_network
+
+volumes:
+  postgres_data:
+
+networks:
+  cultural_agenda_network:
