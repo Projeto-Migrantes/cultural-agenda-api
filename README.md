@@ -65,6 +65,9 @@ JWT_SECRET=dev_secret_key_123
 
 # CORS
 CORS_ORIGIN=http://localhost:3000
+
+# Node
+NODE_ENV=development
 ```
 
 > Exemplo de `.env.example` disponível no projeto. Configure de acordo com o seu ambiente.
