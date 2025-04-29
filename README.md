@@ -51,10 +51,11 @@ Crie um arquivo `.env` na raiz do projeto e defina as seguintes variáveis:
 ```env
 # Banco de Dados
 DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=cultural_agenda_db
 DB_USER=postgres
 DB_PASSWORD=postgres
+
+DB_NAME=cultural_agenda_db
+DB_PORT=5432
 DB_DIALECT=postgres
 
 # Servidor
@@ -68,6 +69,11 @@ CORS_ORIGIN=http://localhost:3000
 
 # Node
 NODE_ENV=development
+
+# Cloudinary
+CLOUDINARY_CLOUD_NAME=dh3hmh3vd
+CLOUDINARY_API_KEY=642136486589865
+CLOUDINARY_API_SECRET=Tawwa0TTyeBr1g7izFR3KpMrJ-s
 ```
 
 > Exemplo de `.env.example` disponível no projeto. Configure de acordo com o seu ambiente.
@@ -77,6 +83,30 @@ NODE_ENV=development
 ```bash
 npm install
 ```
+
+### Criar Banco de Dados
+
+Crie um banco de dados no seu PostgreSQL com o nome `cultural_agenda_db`
+
+### Rodando as Migrações
+
+Após garantir que o banco de dados está configurado, você pode rodar as migrações para criar as tabelas no banco de dados. Isso pode ser feito com o seguinte comando:
+
+```bash
+npx sequelize-cli db:migrate
+```
+
+> **Importante**: Este comando executa as migrações definidas no diretório src/migrations e cria as tabelas no banco de dados especificado no .env.
+
+### Excução dos Seeders (se houver dados inicias)
+
+Após rodar as migrações, você pode rodar os seeders para inserir dados iniciais nas tabelas criadas. Se você tiver seeders prontos, rode o seguinte comando:
+
+```bash
+npx sequelize-cli db:seed:all
+```
+
+> **Observação**: Os seeders são definidos no diretório src/seeders.
 
 ### Execução em Ambiente de Desenvolvimento
 
@@ -92,10 +122,12 @@ docker compose up -d
 
 ## 🛠️ Scripts Disponíveis
 
-|     Comando     |                     Descrição                     |
-| :-------------: | :-----------------------------------------------: |
-|  `npm run dev`  | Executa o servidor em ambiente de desenvolvimento |
-| `npm run start` |    Executa o servidor em ambiente de produção     |
+|      Comando       |                                                                    Descrição                                                                    |
+| :----------------: | :---------------------------------------------------------------------------------------------------------------------------------------------: |
+|   `npm run dev`    | Executa o servidor em ambiente de desenvolvimento utilizando `nodemon`, que reinicia automaticamente o servidor quando há mudanças nos arquivos |
+|  `npm run start`   |             Executa o servidor em ambiente de produção com `node`, sem recarregar automaticamente ao fazer alterações nos arquivos              |
+|   `npm run lint`   |                              Executa o ESLint para verificar problemas de estilo e qualidade de código no projeto                               |
+| `npm run lint:fix` |                   Executa o ESLint e tenta corrigir automaticamente os problemas de estilo e qualidade de código encontrados                    |
 
 ## 📚 Documentação da API
 
