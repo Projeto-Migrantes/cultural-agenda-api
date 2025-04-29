@@ -9,7 +9,9 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "migrate": "sequelize-cli db:migrate --config src/config/config.cjs",
+    "seed": "sequelize-cli db:seed:all --config src/config/config.cjs"
   },
   "repository": {
     "type": "git",
