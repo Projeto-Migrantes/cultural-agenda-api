@@ -1,7 +1,5 @@
 # 🌎 API RESTful - Vivências do Mundo
 
-Licença: [Saber mais](https://github.com/Projeto-Migrantes/cultural-agenda-api/blob/main/LICENSE)
-
 [![Node.js Version](https://img.shields.io/badge/node-22.14.0-brightgreen)](https://nodejs.org/) [![NPM Version](https://img.shields.io/badge/npm-v11.3.0-blue)](https://www.npmjs.com/)
 
 ## 📘 Descrição
