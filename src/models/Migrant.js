@@ -26,6 +26,7 @@ const Migrant = connection.define(
     },
     phone_number: {
       type: DataTypes.STRING(15),
+      allowNull: true,
       unique: true,
     },
     crnm: {
@@ -48,12 +49,14 @@ const Migrant = connection.define(
     },
     purpose: {
       type: DataTypes.TEXT,
+      allowNull: true,
     },
     addresses_id: {
       type: DataTypes.INTEGER,
-        references: {
-          model: Address,
-          key: 'id',
+      allowNull: true,
+      references: {
+        model: Address,
+        key: "id",
       },
     },
     address_complement: {
@@ -62,7 +65,7 @@ const Migrant = connection.define(
     },
     address_number: {
       type: DataTypes.STRING(10),
-      allowNull: false,
+      allowNull: true,
     },
     social_name: {
       type: DataTypes.STRING(255),
@@ -74,7 +77,7 @@ const Migrant = connection.define(
     },
     entry_into_brazil: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     migration_reason: {
       type: DataTypes.STRING(100),
@@ -82,11 +85,11 @@ const Migrant = connection.define(
     },
     country_of_origin: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
     },
     gender: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
     },
     marital_status: {
       type: DataTypes.STRING(50),
@@ -106,7 +109,12 @@ const Migrant = connection.define(
       withPassword: { attributes: {} },
     },
     timestamps: true,
-  }
+  },
 );
+
+Migrant.belongsTo(Address, {
+  foreignKey: "addresses_id",
+  as: "address",
+});
 
 export default Migrant;
