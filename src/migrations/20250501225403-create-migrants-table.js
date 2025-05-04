@@ -1,107 +1,112 @@
 export const up = async (queryInterface, Sequelize) => {
-  await queryInterface.createTable('migrants', {
+  await queryInterface.createTable("migrants", {
     id: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
     },
     full_name: {
-      type: DataTypes.STRING(255),
+      type: Sequelize.STRING(255),
       allowNull: false,
     },
     email: {
-      type: DataTypes.STRING(255),
+      type: Sequelize.STRING(255),
       allowNull: false,
       unique: true,
     },
     date_of_birth: {
-      type: DataTypes.DATE,
+      type: Sequelize.DATE,
       allowNull: false,
     },
     phone_number: {
-      type: DataTypes.STRING(15),
+      type: Sequelize.STRING(15),
+      allowNull: true,
       unique: true,
     },
     crnm: {
-      type: DataTypes.STRING(9),
-      unique: true,
+      type: Sequelize.STRING(9),
       allowNull: false,
+      unique: true,
     },
     password: {
-      type: DataTypes.STRING(255),
+      type: Sequelize.STRING(255),
       allowNull: false,
     },
     registration_data: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+      type: Sequelize.DATE,
       allowNull: false,
+      defaultValue: Sequelize.NOW,
     },
     consent: {
-      type: DataTypes.BOOLEAN,
+      type: Sequelize.BOOLEAN,
       allowNull: false,
     },
     purpose: {
-      type: DataTypes.TEXT,
+      type: Sequelize.TEXT,
+      allowNull: true,
     },
     addresses_id: {
-      type: DataTypes.INTEGER,
-        references: {
-          model: Address,
-          key: 'id',
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      references: {
+        model: "addresses",
+        key: "id",
       },
     },
     address_complement: {
-      type: DataTypes.STRING(50),
+      type: Sequelize.STRING(50),
       allowNull: true,
     },
     address_number: {
-      type: DataTypes.STRING(10),
-      allowNull: false,
+      type: Sequelize.STRING(10),
+      allowNull: true,
     },
     social_name: {
-      type: DataTypes.STRING(255),
+      type: Sequelize.STRING(255),
       allowNull: true,
     },
     language_preference: {
-      type: DataTypes.STRING(50),
+      type: Sequelize.STRING(50),
       allowNull: true,
     },
     entry_into_brazil: {
-      type: DataTypes.DATE,
-      allowNull: false,
+      type: Sequelize.DATE,
+      allowNull: true,
     },
     migration_reason: {
-      type: DataTypes.STRING(100),
+      type: Sequelize.STRING(100),
       allowNull: true,
     },
     country_of_origin: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
+      type: Sequelize.STRING(50),
+      allowNull: true,
     },
     gender: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
+      type: Sequelize.STRING(50),
+      allowNull: true,
     },
     marital_status: {
-      type: DataTypes.STRING(50),
+      type: Sequelize.STRING(50),
       allowNull: true,
     },
     literacy_level: {
-      type: DataTypes.STRING(50),
+      type: Sequelize.STRING(50),
       allowNull: true,
     },
     created_at: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+      type: Sequelize.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW,
     },
     updated_at: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+      type: Sequelize.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW,
     },
   });
-}
+};
 
-export const down = async (queryInterface, Sequelize) =>{
-  await queryInterface.dropTable('migrants');
-}
+export const down = async (queryInterface, Sequelize) => {
+  await queryInterface.dropTable("migrants");
+};
