@@ -112,9 +112,9 @@ const Migrant = connection.define(
   },
 );
 
-Migrant.belongsTo(Address, {
+Address.hasMany(Migrant, {
   foreignKey: "addresses_id",
-  as: "address",
+  as: "migrants",
 });
 
 export default Migrant;
